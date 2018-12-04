@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+${1:var day = new Date().getDay();}
+switch (${2:day}) {
+    case ${3:6}:
+        ${4:// Today it's Saturday}
+        break;
+    case ${5:0}:
+        ${6:// Today it's Sunday}
+        break;
+    default:
+        ${7:// Looking forward to the Weekend}
+}
+${0:}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sw</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
+

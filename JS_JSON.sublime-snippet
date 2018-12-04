@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+// a JavaScript object...:
+var myObj = { "name":"John", "age":31, "city":"New York" };
+// ...converted into JSON:
+var myJSON = JSON.stringify(myObj);
+// send JSON:
+window.location = "demo_json.php?x=" + myJSON;
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>jsjson</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
+

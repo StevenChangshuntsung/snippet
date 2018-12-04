@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+${1:var week = ["Sun.", "Mon.", "Tues.", "Wed.", "Thur.", "Fr.", "Sat."];}
+switch (${2:week[0]}) {
+    case "${3:Sun.}":
+        ${4:// Sunday}
+        break;
+    case "${5:Sat.}":
+        ${6:// Saturday}
+        break;
+    default:
+        ${7:// Monday	Tuesday	Wednesday	Thursday	Friday}
+}
+${0:}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sw</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
+

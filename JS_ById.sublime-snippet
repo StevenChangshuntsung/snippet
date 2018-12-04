@@ -1,10 +1,10 @@
 <snippet>
 	<content><![CDATA[
-\$(${2:}${1:this}${2:})${3:}
+document.getElementById("${2:ID}")
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>this</tabTrigger>
+	<tabTrigger>by</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<!-- <scope>source.js</scope> -->
+	<!-- <scope>source.python</scope> -->
 </snippet>
 

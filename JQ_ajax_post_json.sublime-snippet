@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+\$.ajax({
+	url: '@weblink/${1:main}/${2:sendmailgo}',
+	type: 'POST',
+	dataType: 'json',
+	data: {${3:mtype: mtype, ownid: ownid}},
+})
+.done(function(e) {
+	console.log(e);
+	console.log("success");
+})
+.fail(function(e) {
+	console.log(e);
+	console.log("error");
+});
+${0:} 
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ajax</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.js</scope> -->
+</snippet>
+
