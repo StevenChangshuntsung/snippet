@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -36,7 +36,7 @@
 </html>
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>boot</tabTrigger>
+	<tabTrigger>bootstrap3</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 </snippet>
