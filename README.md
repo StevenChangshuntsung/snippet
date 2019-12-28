@@ -1,7 +1,6 @@
 # snippet
 Sublime Text snippet
-### 路徑
-> Packages\Snippet
+
 
 ### 下載更新
 ```
@@ -17,4 +16,10 @@ git pull
 git add .
 git commit -m "readme"
 git push --all
+```
+### 第一次下載
+#### 路徑
+> \Packages\\\.
+```
+git clone https://github.com/b2977053/snippet.git
 ```
