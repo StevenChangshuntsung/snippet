@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+```
+${1:v0.23.7.3.001}
+```
+```
+測試機 & 72.15 & 72.17 
+${2:2023 07 03 - 001}
+```
+
+${3:git tag -a ${1:v0.23.7.3.001}}
+
+${4:git push --tags}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>gittags</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
+
