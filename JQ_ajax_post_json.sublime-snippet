@@ -1,19 +1,24 @@
 <snippet>
 	<content><![CDATA[
+\$loading.show();
 \$.ajax({
-	url: '@weblink/${1:main}/${2:sendmailgo}',
-	type: 'POST',
+	url: Url.${1:GetLotNumberInfo},
+	type: '${2:POST}',
 	dataType: 'json',
 	data: {${3:mtype: mtype, ownid: ownid}},
 })
-.done(function(e) {
-	console.log(e);
-	console.log("success");
+.done(function(response) {
+	if (response.success) {
+
+	}else {
+		ShowLayoutMessage(response.message);
+	}
 })
 .fail(function(e) {
-	console.log(e);
-	console.log("error");
-});
+	console.error(e);
+	ShowLayoutMessage('Error');
+})
+.always(function () { \$loading.hide(); });
 ${0:} 
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
