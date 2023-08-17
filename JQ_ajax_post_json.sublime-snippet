@@ -1,11 +1,11 @@
 <snippet>
 	<content><![CDATA[
-\$loading.show();
+${3:let data = {mtype: mtype, ownid: ownid\};}
 \$.ajax({
 	url: Url.${1:GetLotNumberInfo},
 	type: '${2:POST}',
 	dataType: 'json',
-	data: {${3:mtype: mtype, ownid: ownid}},
+	data: data,
 })
 .done(function(response) {
 	if (response.success) {
@@ -17,8 +17,7 @@
 .fail(function(e) {
 	console.error(e);
 	ShowLayoutMessage('Error');
-})
-.always(function () { \$loading.hide(); });
+});
 ${0:} 
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
