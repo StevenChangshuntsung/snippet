@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+${0:Dear all, 
+要申請開Teams連線與遠端桌面。
+
+申請資訊如下：
+公司名稱:鼎鼎企管DDMC
+申請事由: ${1:}
+連線人員: 張順宗
+起訖時間: 2024/${2:10}/${3:01} ${6:09}:${7:30} ~ 2024/${2:10}/${3:01} ${8:10}:${9:30}}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>dearall</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.js</scope> -->
+</snippet>
+
