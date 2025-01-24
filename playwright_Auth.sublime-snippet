@@ -1,0 +1,93 @@
+<snippet>
+	<content><![CDATA[
+Mod .gitignore
+```
+/playwright/*.auth
+```
+
+Mod tests/CD0L065.spec.ts
+```javascript
+import { userAuthPath } from '../common/login'
+
+test.use({
+  storageState: userAuthPath()
+});
+```
+
+Add common/login.ts
+```javascript
+import fs from 'fs';
+
+const _userAuthPAth = './playwright/.auth';
+
+export function userAuthGetPath():string {
+    return _userAuthPAth;
+}
+export function userAuthPath():string|undefined {
+    const path = _userAuthPAth;
+    if (fs.existsSync(path)) {
+      return path;
+    }
+    return undefined;
+}
+export function userAuthCookies():string {
+    const path = _userAuthPAth;
+    if (fs.existsSync(path)) {
+        return fs.readFileSync(_userAuthPAth, 'utf-8');
+    }
+    return '{"cookies":""}';
+}
+```
+
+
+
+
+Mod playwright.config.ts
+```json
+  projects: [
+    { name: 'setup', testMatch: /.*\.setup\.ts/ },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup'],
+    },
+  ]
+```
+
+Add tests/auth.setup.ts
+```javascript
+import { test as setup, expect } from '@playwright/test';
+import { userAuthPath, userAuthGetPath } from '../common/login';
+
+async function orderFenc_login(page, goTo) {
+    await page.goto(goTo);
+  	
+    debugger;
+    
+    await page.context().storageState({ path: userAuthGetPath() });
+  }
+
+setup.use({
+  storageState: userAuthPath()
+});
+
+setup('authenticate', async ({ page }) => {
+    const goTo = 'http://localhost:52129/index';
+    await page.goto(goTo);
+
+    const isAdmin = page.getByRole('link', { name: 'admin' });
+    if( await isAdmin.isVisible() === false){
+        await orderFenc_login(page, goTo);
+    }
+    
+});
+```
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>playwright_Auth</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.js</scope> -->
+</snippet>
+
