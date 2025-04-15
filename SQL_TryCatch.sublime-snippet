@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+BEGIN TRY
+BEGIN TRAN--開始執行TRAN
+
+${1:/*...*/}
+
+--COMMIT TRAN --提交TRAN
+ROLLBACK TRAN --還原TRAN
+END TRY
+BEGIN CATCH
+ROLLBACK TRAN --還原TRAN
+
+--DB查詢用
+SELECT
+	ERROR_NUMBER() AS ErrorNumber,
+	ERROR_MESSAGE() AS ErrorMessage,
+	ERROR_LINE() AS ErrorLine,
+	ERROR_PROCEDURE() AS ErrorProcedure,
+	ERROR_SEVERITY() AS ErrorSeverity,
+	ERROR_STATE() AS ErrorState
+END CATCH
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sql-trycatch</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.js</scope> -->
+</snippet>
+

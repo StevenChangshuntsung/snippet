@@ -1,0 +1,53 @@
+<snippet>
+	<content><![CDATA[
+-- 假設我們有一個名為 `MyTable` 的表，其中包含一個 `ID` 列
+
+-- 開始聲明游標
+DECLARE myCursor CURSOR FOR 
+SELECT ID FROM MyTable;
+
+-- 聲明變量
+DECLARE @CurrentID INT;
+
+-- 打開游標
+OPEN myCursor;
+
+-- 獲取第一行
+FETCH NEXT FROM myCursor INTO @CurrentID;
+
+-- 開始循環
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    -- 開始事務
+    BEGIN TRAN;
+    BEGIN TRY
+        ${1:-- 在這裡放置您的處理邏輯
+        -- 例如，對當前記錄進行 UPDATE 語句
+        -- UPDATE AnotherTable SET SomeColumn = 'SomeValue' WHERE ID = @CurrentID;}
+
+        -- 如果一切順利，提交事務
+        COMMIT TRAN;
+    END TRY
+    BEGIN CATCH
+        -- 如果發生錯誤，回滾事務
+        ROLLBACK TRAN;
+
+        ${2:-- 您可以記錄錯誤及導致錯誤的記錄 ID
+        -- INSERT INTO ErrorLog (ErrorMessage, ErrorTime, FailedRecordID) 
+        -- VALUES (ERROR_MESSAGE(), GETDATE(), @CurrentID);}
+    END CATCH;
+
+    -- 移動到下一條記錄
+    FETCH NEXT FROM myCursor INTO @CurrentID;
+END
+
+-- 關閉並釋放游標
+CLOSE myCursor;
+DEALLOCATE myCursor;
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sql-trycatchCursor</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.js</scope> -->
+</snippet>
+

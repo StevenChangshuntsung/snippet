@@ -1,0 +1,39 @@
+<snippet>
+	<content><![CDATA[${0:
+# 定義來源與目標資料夾
+$sourceRoot = '${1:D:\HRM\HRM_FEPH\HRM\HRM_FEPH_PRD_GIT}'
+$targetRoot = '${2:C:\Users\USER\Downloads\20250415_FEPH}'
+
+Get-ChildItem -Path $sourceRoot -Recurse -Force |
+Where-Object {
+    -not ($_.FullName -match '\\\.svn\\' -or
+          $_.FullName -match '\\\.git\\' -or
+          $_.FullName -match '\\\.vs\\' -or
+          $_.FullName -match '\\bin\\' -or
+          $_.FullName -match '\\obj\\' -or
+          $_.FullName -match '\\packages\\' -or
+          $_.Name -like '*.gitignore' -or
+          $_.Name -like '*.user' -or
+          $_.Name -like '*.csproj')
+\} |
+ForEach-Object {
+    # 建立對應的目標路徑
+    $targetPath = $_.FullName -replace [regex]::Escape($sourceRoot), $targetRoot
+
+    if ($_.PSIsContainer) {
+        # 如果是資料夾，則建立它
+        if (-not (Test-Path -LiteralPath $targetPath)) {
+            New-Item -ItemType Directory -Path $targetPath | Out-Null
+        \}
+    \} else {
+        # 如果是檔案，則複製
+        Copy-Item -Path $_.FullName -Destination $targetPath -Force
+    \}
+\}}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>powershell_copyfile_ddmc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
+
